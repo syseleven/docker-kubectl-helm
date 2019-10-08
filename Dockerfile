@@ -6,9 +6,8 @@ RUN curl -sS https://get.helm.sh/helm-v2.14.2-linux-amd64.tar.gz | tar xz
 RUN chmod +x /usr/bin/kubectl linux-amd64/*
 
 FROM alpine:latest
-RUN apk --update add --no-cache git
 COPY --from=downloader /usr/bin/kubectl /usr/bin/kubectl
 COPY --from=downloader linux-amd64/helm /usr/bin/helm
-RUN helm version --client
-RUN kubectl version --client
-RUN git version
+RUN apk --update add --no-cache git bash curl make && \
+    helm init --client-only && \
+    helm plugin install https://github.com/databus23/helm-diff --version master
