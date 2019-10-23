@@ -4,5 +4,5 @@ Kubectl Helm Git etc. Toolbox as Docker image.
 Lookout for: https://hub.docker.com/r/syseleven/kubectl-helm
 # Which Versions?
 * Kubectl 1.15
-* Helm 2.14
+* Helm 2.14.2
 * Git latest
