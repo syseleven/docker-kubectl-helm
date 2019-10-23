@@ -1,8 +1,8 @@
 FROM alpine:latest as downloader
 
 RUN apk add curl
-RUN curl -L -o /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.15.1/bin/linux/amd64/kubectl
-RUN curl -sS https://get.helm.sh/helm-v2.14.2-linux-amd64.tar.gz | tar xz
+RUN curl -L -o /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.16.0/bin/linux/amd64/kubectl
+RUN curl -sS https://get.helm.sh/helm-v2.15.1-linux-amd64.tar.gz | tar xz
 RUN chmod +x /usr/bin/kubectl linux-amd64/*
 
 FROM alpine:latest
