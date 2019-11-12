@@ -1,0 +1,4 @@
+*
+!/usr/bin/kubectl
+!linux-amd64/helm
+!/usr/bin/helmfile

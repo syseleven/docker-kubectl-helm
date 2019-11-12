@@ -1,0 +1,27 @@
+include:
+  - project: syseleven/gitlab-ci-templates
+    file: DockerBuild-kaniko.yml
+    ref: 1.3.0
+
+kaniko-build-master:
+  tags:
+    - metakube
+    - shared
+
+kaniko-build-tags:
+  extends: .kaniko-build-base
+  variables:
+    DOCKERFILE: Dockerfile
+    IMAGE_TAG: "${CI_COMMIT_TAG}"
+  script:
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile "${CI_PROJECT_DIR}/${DOCKERFILE}" ${DOCKER_BUILD_ARGS} --destination "${IMAGE_NAME}:${IMAGE_TAG}"
+  tags:
+    - metakube
+    - shared
+  only:
+    - tags
+
+kaniko-build:
+  tags:
+    - metakube
+    - shared
