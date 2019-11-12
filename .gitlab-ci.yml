@@ -7,7 +7,6 @@ kaniko-build-master:
   tags:
     - metakube
     - shared
-    - prod
 
 kaniko-build-tags:
   extends: .kaniko-build-base
@@ -19,6 +18,5 @@ kaniko-build-tags:
   tags:
     - metakube
     - shared
-    - prod
   only:
     - tags
