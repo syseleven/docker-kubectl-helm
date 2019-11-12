@@ -20,3 +20,8 @@ kaniko-build-tags:
     - shared
   only:
     - tags
+
+kaniko-build:
+  tags:
+    - metakube
+    - shared
