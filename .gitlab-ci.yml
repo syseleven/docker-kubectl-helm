@@ -8,6 +8,14 @@ kaniko-build-master:
     - metakube
     - shared
 
+kaniko-build-master-dockerhub:
+  extends: kaniko-build-master
+  variables:
+    CI_REGISTRY: 'https://index.docker.io/v1/'
+    CI_REGISTRY_USER: $DOCKERHUBUSER
+    CI_REGISTRY_PASSWORD: $DOCKERHUBTOKEN
+    IMAGE_NAME: syseleven/kubectl-helm
+
 kaniko-build-tags:
   extends: .kaniko-build-base
   variables:
@@ -20,6 +28,14 @@ kaniko-build-tags:
     - shared
   only:
     - tags
+
+kaniko-build-tags-dockerhub:
+  extends: kaniko-build-tags
+  variables:
+    CI_REGISTRY: 'https://index.docker.io/v1/'
+    CI_REGISTRY_USER: $DOCKERHUBUSER
+    CI_REGISTRY_PASSWORD: $DOCKERHUBTOKEN
+    IMAGE_NAME: syseleven/kubectl-helm
 
 kaniko-build:
   tags:
