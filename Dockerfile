@@ -12,5 +12,4 @@ COPY --from=downloader /usr/bin/kubectl /usr/bin/kubectl
 COPY --from=downloader linux-amd64/helm /usr/bin/helm
 COPY --from=downloader /usr/bin/helmfile /usr/bin/helmfile
 RUN apk --update add --no-cache git bash curl make openssl coreutils pv && \
-    helm init && \
     helm plugin install https://github.com/databus23/helm-diff --version master
