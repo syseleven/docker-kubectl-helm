@@ -6,11 +6,11 @@ RUN curl -sS https://get.helm.sh/helm-v2.16.1-linux-amd64.tar.gz | tar xz
 RUN curl -L -o /usr/bin/helmfile https://github.com/roboll/helmfile/releases/download/v0.90.8/helmfile_linux_amd64
 RUN chmod +x /usr/bin/kubectl linux-amd64/* /usr/bin/helmfile
 
-
 FROM alpine:latest
 COPY --from=downloader /usr/bin/kubectl /usr/bin/kubectl
 COPY --from=downloader linux-amd64/helm /usr/bin/helm
 COPY --from=downloader /usr/bin/helmfile /usr/bin/helmfile
-RUN apk --update add --no-cache git bash curl make openssl coreutils pv && \
+RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
+    apk --update add --no-cache git bash curl make openssl coreutils pv 's3cmd@testing=2.0.2-r2' && \
     helm init --client-only && \
     helm plugin install https://github.com/databus23/helm-diff --version master
