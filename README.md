@@ -6,5 +6,5 @@ Lookout for: https://hub.docker.com/r/syseleven/kubectl-helm
 * Kubectl 1.16.0
 * Helm 3.0.2
 * Git latest
-* helmfile v0.90.8
+* helmfile v0.98.2
 * s3cmd v2.0.2
