@@ -2,6 +2,9 @@ include:
   - project: syseleven/gitlab-ci-templates
     file: DockerBuild-kaniko.yml
     ref: 1.6.1
+  - project: syseleven/gitlab-ci-templates
+    file: DockerLint.yml
+    ref: 1.6.1
 
 .kaniko-build-base:
   tags:
