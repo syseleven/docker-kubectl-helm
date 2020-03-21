@@ -3,7 +3,7 @@ include:
     file: DockerBuild-kaniko.yml
     ref: 1.6.1
 
-kaniko-build-master:
+.kaniko-build-base:
   tags:
     - metakube
     - shared
@@ -16,11 +16,6 @@ kaniko-build-master-dockerhub:
     CI_REGISTRY_PASSWORD: $DOCKERHUBTOKEN
     IMAGE_NAME: syseleven/kubectl-helm
 
-kaniko-build-tags:
-  tags:
-    - metakube
-    - shared
-
 kaniko-build-tags-dockerhub:
   extends: kaniko-build-tags
   variables:
@@ -28,8 +23,3 @@ kaniko-build-tags-dockerhub:
     CI_REGISTRY_USER: $DOCKERHUBUSER
     CI_REGISTRY_PASSWORD: $DOCKERHUBTOKEN
     IMAGE_NAME: syseleven/kubectl-helm
-
-kaniko-build:
-  tags:
-    - metakube
-    - shared
