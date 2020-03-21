@@ -6,6 +6,10 @@ include:
     file: DockerLint.yml
     ref: 1.6.1
 
+stages:
+  - test
+  - build
+  
 .kaniko-build-base:
   tags:
     - metakube
