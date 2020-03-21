@@ -1,7 +1,7 @@
 include:
   - project: syseleven/gitlab-ci-templates
     file: DockerBuild-kaniko.yml
-    ref: 1.5.0
+    ref: 1.6.1
 
 kaniko-build-master:
   tags:
