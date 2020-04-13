@@ -11,6 +11,6 @@ COPY --from=downloader /usr/bin/kubectl /usr/bin/kubectl
 COPY --from=downloader linux-amd64/helm /usr/bin/helm
 COPY --from=downloader /usr/bin/helmfile /usr/bin/helmfile
 RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
-    apk --update add --no-cache git bash curl make openssl coreutils pv 's3cmd@testing=2.0.2-r2' && \
+    apk --update add --no-cache git bash curl make openssl coreutils pv 's3cmd@testing=2.1.0-r0' && \
     helm plugin install https://github.com/databus23/helm-diff --version master && \
     helm repo add stable https://kubernetes-charts.storage.googleapis.com/
