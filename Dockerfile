@@ -1,5 +1,7 @@
 FROM alpine:3.11.3 as downloader
 
+# This is a builder image, we do not need cache maintenance here
+# hadolint ignore=DL3019
 RUN apk add curl
 RUN curl -sS https://get.helm.sh/helm-v3.2.0-linux-amd64.tar.gz | tar xz
 RUN curl -L -o /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.18.2/bin/linux/amd64/kubectl
