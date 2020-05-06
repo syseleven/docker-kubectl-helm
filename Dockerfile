@@ -1,7 +1,7 @@
 FROM alpine:3.11.3 as downloader
 
 RUN apk add curl
-RUN curl -sS https://get.helm.sh/helm-v3.1.2-linux-amd64.tar.gz | tar xz
+RUN curl -sS https://get.helm.sh/helm-v3.2.0-linux-amd64.tar.gz | tar xz
 RUN curl -L -o /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.17.3/bin/linux/amd64/kubectl
 RUN curl -L -o /usr/bin/helmfile https://github.com/roboll/helmfile/releases/download/v0.102.0/helmfile_linux_amd64
 RUN chmod +x /usr/bin/kubectl linux-amd64/* /usr/bin/helmfile
