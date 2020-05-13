@@ -8,6 +8,7 @@ RUN curl -L -o /usr/bin/kubectl https://storage.googleapis.com/kubernetes-releas
 RUN curl -L -o /usr/bin/helmfile https://github.com/roboll/helmfile/releases/download/v0.116.0/helmfile_linux_amd64
 RUN chmod +x /usr/bin/kubectl linux-amd64/* /usr/bin/helmfile
 
+# The actual toolbox image
 FROM alpine:3.11.3
 COPY --from=downloader /usr/bin/kubectl /usr/bin/kubectl
 COPY --from=downloader linux-amd64/helm /usr/bin/helm
