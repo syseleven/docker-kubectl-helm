@@ -10,7 +10,7 @@ You can docker pull it from <https://hub.docker.com/r/syseleven/kubectl-helm>
 ## Contained software versions
 
 * Kubectl 1.18.2
-* Helm 3.2.0
+* Helm 3.2.1
   * Helm Diff latest
 * Git latest
 * helmfile v0.114.0
