@@ -1,37 +1,84 @@
 include:
   - project: syseleven/gitlab-ci-templates
     file: DockerBuild-kaniko.yml
-    ref: 1.6.1
+    ref: 1.7.1
   - project: syseleven/gitlab-ci-templates
     file: DockerLint.yml
-    ref: 1.6.1
+    ref: 1.7.1
   - project: syseleven/gitlab-ci-templates
     file: YamlLint.yml
-    ref: 1.6.1
+    ref: 1.7.1
   - project: syseleven/gitlab-ci-templates
     file: MarkdownLint.yml
-    ref: 1.6.1
+    ref: 1.7.1
+  - project: syseleven/gitlab-ci-templates
+    file: ContainerImageCVEScan.yml
+    ref: 1.7.1
 
 stages:
   - test
   - build
+  - validate
 
 .kaniko-build-base:
   tags:
     - onetime
 
-kaniko-build-master-dockerhub:
-  extends: kaniko-build-master
+.dockerhub_variables: &dockerhub_variables
   variables:
     CI_REGISTRY: 'https://index.docker.io/v1/'
     CI_REGISTRY_USER: $DOCKERHUBUSER
     CI_REGISTRY_PASSWORD: $DOCKERHUBTOKEN
     IMAGE_NAME: syseleven/kubectl-helm
 
+kaniko-build-master-dockerhub:
+  extends: kaniko-build-master
+  <<: *dockerhub_variables
+
 kaniko-build-tags-dockerhub:
   extends: kaniko-build-tags
+  <<: *dockerhub_variables
+
+# validation of the built image
+
+# ensure all cve scans run in the validation stage
+.cve-scan-base:
+  stage: validate
+
+# ensure the installed binaries actually work
+.validate-binaries-base:
   variables:
-    CI_REGISTRY: 'https://index.docker.io/v1/'
-    CI_REGISTRY_USER: $DOCKERHUBUSER
-    CI_REGISTRY_PASSWORD: $DOCKERHUBTOKEN
-    IMAGE_NAME: syseleven/kubectl-helm
+    VALIDATION_IMAGE: "${QUALIFIED_IMAGE_NAME}"
+  image:
+    name: "${VALIDATION_IMAGE}"
+    entrypoint: [""]
+  stage: validate
+  script:
+    - helm version
+    - helm repo list
+    - helm diff --help
+    - kubectl version --client
+    - helmfile --version
+    - s3cmd --version
+    - git version
+    - make --version
+    - curl --version
+
+validate-binaries-master:
+  extends: .validate-binaries-base
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "master"'
+
+validate-binaries-branch:
+  extends: .validate-binaries-base
+  variables:
+    VALIDATION_IMAGE: "${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_SLUG}"
+  rules:
+    - if: '$CI_COMMIT_REF_NAME != "master"'
+
+validate-binaries-tag:
+  extends: .validate-binaries-base
+  variables:
+    VALIDATION_IMAGE: "${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}"
+  rules:
+    - if: '$CI_COMMIT_TAG != null'

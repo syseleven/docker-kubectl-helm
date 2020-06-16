@@ -14,4 +14,4 @@ You can docker pull it from <https://hub.docker.com/r/syseleven/kubectl-helm>
   * Helm Diff latest
 * Git latest
 * helmfile v0.116.0
-* s3cmd v2.0.2
+* s3cmd v2.1.0-r1
