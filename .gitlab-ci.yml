@@ -48,7 +48,7 @@ kaniko-build-tags-dockerhub:
 # ensure the installed binaries actually work
 .validate-binaries-base:
   variables:
-    VALIDATION_IMAGE: "${QUALIFIED_IMAGE_NAME}"
+    VALIDATION_IMAGE: "${CI_REGISTRY_IMAGE}:latest"
   image:
     name: "${VALIDATION_IMAGE}"
     entrypoint: [""]
