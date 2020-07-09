@@ -12,7 +12,7 @@ RUN chmod +x /usr/bin/kubectl linux-amd64/* /usr/bin/helmfile
 FROM alpine:3.12.0
 COPY --from=downloader /usr/bin/kubectl /usr/bin/kubectl
 COPY --from=downloader linux-amd64/helm /usr/bin/helm
-RUN apk add git --no-cache
+RUN apk add git openssh --no-cache
 RUN helm plugin install https://github.com/aslafy-z/helm-git
 COPY --from=downloader /usr/bin/helmfile /usr/bin/helmfile
 RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
