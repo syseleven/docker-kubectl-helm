@@ -11,7 +11,8 @@ You can docker pull it from <https://hub.docker.com/r/syseleven/kubectl-helm>
 
 Releases are named `helm-x.y.z` after the contained helm version.
 
-If updates are published without changing the helm version, they are numbered `helm-x.y.z-NUMBER`, starting from `1`.
+If updates are published without changing the helm version,
+they are numbered `helm-x.y.z-NUMBER`, starting from `1`.
 
 ## Contained software versions
 
@@ -24,4 +25,3 @@ The image is based on alpine:3.12.0.
 * Git latest
 * helmfile v0.119.1
 * s3cmd v2.1.0-r1
-
