@@ -9,6 +9,12 @@ You can docker pull it from <https://hub.docker.com/r/syseleven/kubectl-helm>
 
 ## Release naming
 
+### 4.x.y+
+
+Releases are named using [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
+
+### Before 4.0.0
+
 Releases are named `helm-x.y.z` after the contained helm version.
 
 If updates are published without changing the helm version,
