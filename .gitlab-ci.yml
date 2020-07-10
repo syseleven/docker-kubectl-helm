@@ -19,6 +19,7 @@ stages:
   - test
   - build
   - validate
+  - cleanup
 
 .kaniko-build-base:
   tags:
@@ -38,6 +39,9 @@ kaniko-build-master-dockerhub:
 kaniko-build-tags-dockerhub:
   extends: kaniko-build-tags
   <<: *dockerhub_variables
+
+kaniko-rm-dev-image:
+  stage: cleanup
 
 # validation of the built image
 
