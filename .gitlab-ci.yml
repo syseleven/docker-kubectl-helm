@@ -13,7 +13,7 @@ include:
     ref: 1.7.1
   - project: syseleven/gitlab-ci-templates
     file: ContainerImageCVEScan.yml
-    ref: 1.7.1
+    ref: 2.0.0
 
 stages:
   - test
