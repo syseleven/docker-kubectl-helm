@@ -71,7 +71,7 @@ kaniko-rm-dev-image:
 validate-binaries-master:
   extends: .validate-binaries-base
   rules:
-    - if: '$CI_COMMIT_REF_NAME == "master"'
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 validate-binaries-mr:
   extends: .validate-binaries-base
@@ -85,4 +85,4 @@ validate-binaries-tag:
   variables:
     VALIDATION_IMAGE: "${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}"
   rules:
-    - if: '$CI_COMMIT_TAG != null'
+    - if: $CI_COMMIT_TAG
