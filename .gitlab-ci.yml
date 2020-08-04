@@ -1,19 +1,19 @@
 include:
   - project: syseleven/gitlab-ci-templates
     file: DockerBuild-kaniko.yml
-    ref: 1.7.1
+    ref: 3.2.0
   - project: syseleven/gitlab-ci-templates
     file: DockerLint.yml
-    ref: 1.7.1
+    ref: 3.2.0
   - project: syseleven/gitlab-ci-templates
     file: YamlLint.yml
-    ref: 1.7.1
+    ref: 3.2.0
   - project: syseleven/gitlab-ci-templates
     file: MarkdownLint.yml
-    ref: 1.7.1
+    ref: 3.2.0
   - project: syseleven/gitlab-ci-templates
     file: ContainerImageCVEScan.yml
-    ref: 1.7.1
+    ref: 3.2.0
 
 stages:
   - test
@@ -69,16 +69,12 @@ validate-binaries-master:
   rules:
     - if: '$CI_COMMIT_REF_NAME == "master"'
 
-validate-binaries-branch:
+validate-binaries-mr:
   extends: .validate-binaries-base
   variables:
     VALIDATION_IMAGE: "${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_SLUG}"
   rules:
-    - if: '$CI_COMMIT_TAG'
-      when: never
-    - if: '$CI_COMMIT_BRANCH == "master"'
-      when: never
-    - when: always
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
 
 validate-binaries-tag:
   extends: .validate-binaries-base
