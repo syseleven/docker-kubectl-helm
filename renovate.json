@@ -1,0 +1,30 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    ":docker",
+    ":prHourlyLimitNone",
+    ":rebaseStalePrs",
+    ":label(renovate)"
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": ["RUN.*https://get.helm.sh/helm-v(?<currentValue>.*?)-linux-amd64.tar.gz.*\n"],
+      "depNameTemplate": "helm/helm",
+      "datasourceTemplate": "github-releases"
+    },
+    {
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": ["RUN.*https://storage.googleapis.com/kubernetes-release/release/(?<currentValue>.*?)/bin/linux/amd64/kubectl.*\n"],
+      "depNameTemplate": "kubernetes/kubernetes",
+      "datasourceTemplate": "github-releases"
+    },
+    {
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": ["RUN.*https://github.com/roboll/helmfile/releases/download/(?<currentValue>.*?)/helmfile_linux_amd64\n"],
+      "depNameTemplate": "roboll/helmfile",
+      "datasourceTemplate": "github-releases"
+    }
+  ]
+}
