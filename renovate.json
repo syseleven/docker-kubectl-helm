@@ -26,5 +26,10 @@
       "depNameTemplate": "roboll/helmfile",
       "datasourceTemplate": "github-releases"
     }
-  ]
+  ],
+  "gitlabci-include": {
+    "commitBody": "[skip-release]",
+    "automerge": true,
+    "gitLabAutomerge": true
+  }
 }
