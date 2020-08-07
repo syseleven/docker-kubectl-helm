@@ -30,4 +30,5 @@ The image is based on alpine:3.12.0.
   * helm-git latest
 * Git latest
 * helmfile v0.119.1
+* kustomize v3.8.1
 * s3cmd v2.1.0-r1

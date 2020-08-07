@@ -63,6 +63,7 @@ kaniko-rm-dev-image:
     - helm diff --help
     - kubectl version --client
     - helmfile --version
+    - kustomize version
     - s3cmd --version
     - git version
     - make --version
