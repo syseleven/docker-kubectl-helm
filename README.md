@@ -22,13 +22,6 @@ they are numbered `helm-x.y.z-NUMBER`, starting from `1`.
 
 ## Contained software versions
 
-The image is based on alpine:3.12.0.
-
-* Kubectl 1.18.5
-* Helm 3.2.4
-  * helm diff latest
-  * helm-git latest
-* Git latest
-* helmfile v0.119.1
-* kustomize v3.8.1
-* s3cmd v2.1.0-r1
+Versions are mostly automatically updated by Renovate. Please check the
+individual release for version numbers. This can alternatively be checked in
+the global variables section of the [.gitlab-ci.yml](.gitlab-ci.yml#L24).
