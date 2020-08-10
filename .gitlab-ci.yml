@@ -21,9 +21,32 @@ stages:
   - validate
   - cleanup
 
+variables:
+  # renovate: datasource=docker depName=alpine
+  ALPINE_VERSION: 3.11.5
+  # renovate: datasource=github-releases depName=helm/helm
+  HELM_VERSION: v3.2.3
+  # renovate: datasource=github-releases depName=kubernetes/kubernetes
+  KUBECTL_VERSION: v1.18.4
+  # renovate: datasource=github-releases depName=roboll/helmfile
+  HELMFILE_VERSION: v0.119.0
+  KUSTOMIZE_VERSION: v3.8.1
+  S3CMD_VERSION: 2.1.0-r0
+  # renovate: datasource=github-releases depName=databus23/helm-diff
+  HELMDIFF_VERSION: v3.1.1
+
 .kaniko-build-base:
   tags:
     - onetime
+  variables:
+    DOCKER_BUILD_ARGS: >
+      --build-arg ALPINE_VERSION=${ALPINE_VERSION}
+      --build-arg HELM_VERSION=${HELM_VERSION}
+      --build-arg KUBECTL_VERSION=${KUBECTL_VERSION}
+      --build-arg HELMFILE_VERSION=${HELMFILE_VERSION}
+      --build-arg KUSTOMIZE_VERSION=${KUSTOMIZE_VERSION}
+      --build-arg S3CMD_VERSION=${S3CMD_VERSION}
+      --build-arg HELMDIFF_VERSION=${HELMDIFF_VERSION}
 
 .dockerhub_variables: &dockerhub_variables
   variables:
@@ -58,13 +81,15 @@ kaniko-rm-dev-image:
     entrypoint: [""]
   stage: validate
   script:
-    - helm version
+    - grep "VERSION_ID=${ALPINE_VERSION}" /etc/os-release
+    - helm version | grep "${HELM_VERSION}"
     - helm repo list
     - helm diff --help
-    - kubectl version --client
-    - helmfile --version
-    - kustomize version
-    - s3cmd --version
+    - helm plugin list | grep "diff.*${HELMDIFF_VERSION/v/}"
+    - kubectl version --client | grep "${KUBECTL_VERSION}"
+    - helmfile --version | grep "${HELMFILE_VERSION}"
+    - kustomize version | grep "${KUSTOMIZE_VERSION}"
+    - s3cmd --version | grep "${S3CMD_VERSION/-r*/}"
     - git version
     - make --version
     - curl --version
