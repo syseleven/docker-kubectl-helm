@@ -27,4 +27,4 @@ RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/re
     apk --update add --no-cache git bash curl make openssh openssl coreutils pv "s3cmd@testing=${S3CMD_VERSION}" && \
     helm plugin install https://github.com/databus23/helm-diff --version "${HELMDIFF_VERSION}" && \
     helm plugin install https://github.com/aslafy-z/helm-git && \
-    helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+    helm repo add stable https://charts.helm.sh/stable
