@@ -5,6 +5,7 @@ ARG HELM_VERSION
 ARG KUBECTL_VERSION
 ARG HELMFILE_VERSION
 ARG KUSTOMIZE_VERSION
+ARG PLUTO_VERSION
 
 # This is a builder image, we do not need cache maintenance here
 # hadolint ignore=DL3019
@@ -14,6 +15,8 @@ RUN curl https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz | tar xz --
 RUN curl -L -o kubectl https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl
 RUN curl -L -o helmfile https://github.com/roboll/helmfile/releases/download/${HELMFILE_VERSION}/helmfile_linux_amd64
 RUN curl -L https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2F${KUSTOMIZE_VERSION}/kustomize_${KUSTOMIZE_VERSION}_linux_amd64.tar.gz | tar xz
+RUN PLUTO_VVERSION=$(echo "${PLUTO_VERSION}" | tr -d v) \
+    && curl -L "https://github.com/FairwindsOps/pluto/releases/download/${PLUTO_VERSION}/pluto_${PLUTO_VVERSION}_linux_amd64.tar.gz" | tar xz
 RUN chmod +x /downloader/*
 
 # The actual toolbox image

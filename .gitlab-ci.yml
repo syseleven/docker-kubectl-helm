@@ -34,6 +34,8 @@ variables:
   S3CMD_VERSION: 2.1.0-r0
   # renovate: datasource=github-releases depName=databus23/helm-diff
   HELMDIFF_VERSION: v3.1.3
+  # renovate: datasource=github-releases depName=FairwindsOps/pluto
+  PLUTO_VERSION: v3.5.3
 
 .kaniko-build-base:
   tags:
@@ -47,6 +49,7 @@ variables:
       --build-arg KUSTOMIZE_VERSION=${KUSTOMIZE_VERSION}
       --build-arg S3CMD_VERSION=${S3CMD_VERSION}
       --build-arg HELMDIFF_VERSION=${HELMDIFF_VERSION}
+      --build-arg PLUTO_VERSION=${PLUTO_VERSION}
 
 .dockerhub_variables: &dockerhub_variables
   variables:
@@ -93,6 +96,7 @@ kaniko-rm-dev-image:
     - git version
     - make --version
     - curl --version
+    - pluto version
 
 validate-binaries-master:
   extends: .validate-binaries-base
