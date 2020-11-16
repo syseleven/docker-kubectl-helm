@@ -1,4 +1,5 @@
 include:
+  - template: 'Workflows/MergeRequest-Pipelines.gitlab-ci.yml'
   - project: syseleven/gitlab-ci-templates
     file: DockerBuild-kaniko.yml
     ref: 3.4.1
