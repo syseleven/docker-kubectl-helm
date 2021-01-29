@@ -23,7 +23,7 @@ stages:
 
 variables:
   # renovate: datasource=docker depName=alpine
-  ALPINE_VERSION: 3.12.3
+  ALPINE_VERSION: 3.13.1
   # renovate: datasource=github-releases depName=helm/helm
   HELM_VERSION: v3.4.2
   # renovate: datasource=github-releases depName=kubernetes/kubernetes
