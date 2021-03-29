@@ -55,8 +55,8 @@ variables:
     CI_REGISTRY_PASSWORD: $DOCKERHUBTOKEN
     IMAGE_NAME: syseleven/kubectl-helm
 
-kaniko-build-master-dockerhub:
-  extends: kaniko-build-master
+kaniko-build-default-dockerhub:
+  extends: kaniko-build-default
   <<: *dockerhub_variables
 
 kaniko-build-tags-dockerhub:
@@ -94,7 +94,7 @@ kaniko-rm-dev-image:
     - make --version
     - curl --version
 
-validate-binaries-master:
+validate-binaries-default:
   extends: .validate-binaries-base
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
