@@ -31,7 +31,7 @@ variables:
   # renovate: datasource=github-releases depName=roboll/helmfile
   HELMFILE_VERSION: v0.138.7
   KUSTOMIZE_VERSION: v3.8.1
-  S3CMD_VERSION: 2.1.0-r0
+  S3CMD_VERSION: 2.1.0-r1
   # renovate: datasource=github-releases depName=databus23/helm-diff
   HELMDIFF_VERSION: v3.1.3
 
