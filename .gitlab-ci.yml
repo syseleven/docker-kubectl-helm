@@ -22,8 +22,11 @@ stages:
   - cleanup
 
 variables:
+  # We need this older alpine version, because s3cmd is broken with python3.9
+  # Need to wait until there is a newer thatn 2.1.0-r1 version for s3cmd
+  # https://github.com/s3tools/s3cmd/issues/1182
   # renovate: datasource=docker depName=alpine
-  ALPINE_VERSION: 3.14.2
+  ALPINE_VERSION: 3.13.5
   # renovate: datasource=github-releases depName=helm/helm
   HELM_VERSION: v3.6.3
   # renovate: datasource=github-releases depName=kubernetes/kubernetes
