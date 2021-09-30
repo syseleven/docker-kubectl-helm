@@ -32,7 +32,7 @@ variables:
   # renovate: datasource=github-releases depName=kubernetes/kubernetes
   KUBECTL_VERSION: v1.21.4
   # renovate: datasource=github-releases depName=roboll/helmfile
-  HELMFILE_VERSION: v0.140.0
+  HELMFILE_VERSION: v0.140.1
   KUSTOMIZE_VERSION: v4.3.0
   S3CMD_VERSION: 2.1.0-r2
   # renovate: datasource=github-releases depName=databus23/helm-diff
