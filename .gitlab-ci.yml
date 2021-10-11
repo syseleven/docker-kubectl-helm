@@ -35,7 +35,7 @@ variables:
   HELMFILE_VERSION: v0.140.1
   KUSTOMIZE_VERSION: v4.3.0
   # renovate: datasource=repology depName=alpine_edge/s3cmd
-  S3CMD_VERSION: 2.1.0-r2
+  S3CMD_VERSION: 2.2.0-r0
   # renovate: datasource=github-releases depName=databus23/helm-diff
   HELMDIFF_VERSION: v3.1.3
 
