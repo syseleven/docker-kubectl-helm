@@ -28,7 +28,7 @@ variables:
   # renovate: datasource=docker depName=alpine
   ALPINE_VERSION: 3.14.2
   # renovate: datasource=github-releases depName=helm/helm
-  HELM_VERSION: v3.7.0
+  HELM_VERSION: v3.7.1
   # renovate: datasource=github-releases depName=kubernetes/kubernetes
   KUBECTL_VERSION: v1.21.4
   # renovate: datasource=github-releases depName=roboll/helmfile
