@@ -1,19 +1,19 @@
 include:
   - project: syseleven/gitlab-ci-templates
     file: DockerBuild-kaniko.yml
-    ref: 3.8.0
+    ref: 3.12.1
   - project: syseleven/gitlab-ci-templates
     file: DockerLint.yml
-    ref: 3.8.0
+    ref: 3.12.1
   - project: syseleven/gitlab-ci-templates
     file: YamlLint.yml
-    ref: 3.8.0
+    ref: 3.12.1
   - project: syseleven/gitlab-ci-templates
     file: MarkdownLint.yml
-    ref: 3.8.0
+    ref: 3.12.1
   - project: syseleven/gitlab-ci-templates
     file: ContainerImageCVEScan.yml
-    ref: 3.8.0
+    ref: 3.12.1
 
 stages:
   - test
