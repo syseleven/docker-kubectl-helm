@@ -124,7 +124,7 @@ release:
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   stage: release
   script:
-    - export TAG=$(< VERSION)
+    - export TAG=$(cat VERSION)
     - printf "Releasing %s in version %s\nSee %s/-/releases" "${CI_PROJECT_NAME}" "${TAG}" "${CI_PROJECT_URL}"
     - release-cli create --name "Release ${TAG}" --tag-name "${TAG}" --description "Container Image Release ${TAG}"
   rules:
