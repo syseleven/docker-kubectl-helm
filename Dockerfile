@@ -25,7 +25,6 @@ ARG HELMDIFF_VERSION
 COPY --from=downloader /downloader/* /usr/bin/
 RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
   && apk --update add --no-cache git bash curl make openssh openssl coreutils pv "s3cmd@testing=${S3CMD_VERSION}" \
-  && cp -r /usr/lib/python3.10/site-packages/S3 /usr/lib/python3.9/site-packages/ \
   && helm plugin install https://github.com/databus23/helm-diff --version "${HELMDIFF_VERSION}" \
   && helm plugin install https://github.com/aslafy-z/helm-git \
   && helm repo add stable https://charts.helm.sh/stable
