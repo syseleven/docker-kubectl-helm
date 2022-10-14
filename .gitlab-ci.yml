@@ -36,6 +36,8 @@ variables:
   S3CMD_VERSION: 2.2.0-r1
   # renovate: datasource=github-releases depName=databus23/helm-diff
   HELMDIFF_VERSION: v3.6.0
+  # renovate: datasource=github-releases depName=aslafy-z/helm-git
+  HELMGIT_VERSION: 0.13.0
 
 .kaniko-build-base:
   tags:

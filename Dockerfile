@@ -26,5 +26,5 @@ COPY --from=downloader /downloader/* /usr/bin/
 RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
   && apk --update add --no-cache git bash curl make openssh openssl coreutils pv "s3cmd@testing=${S3CMD_VERSION}" \
   && helm plugin install https://github.com/databus23/helm-diff --version "${HELMDIFF_VERSION}" \
-  && helm plugin install https://github.com/aslafy-z/helm-git \
+  && helm plugin install https://github.com/aslafy-z/helm-git --version "${HELMGIT_VERSION}" \
   && helm repo add stable https://charts.helm.sh/stable
