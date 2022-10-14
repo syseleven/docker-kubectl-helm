@@ -7,6 +7,12 @@
     ":rebaseStalePrs",
     ":label(renovate)"
   ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["helmfile/helmfile"],
+      "extractVersion": "^v(?<version>.*)$"
+    }
+  ],
   "regexManagers": [
     {
       "fileMatch": [
