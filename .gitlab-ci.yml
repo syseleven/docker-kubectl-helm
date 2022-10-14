@@ -28,7 +28,7 @@ variables:
   # renovate: datasource=github-releases depName=helm/helm
   HELM_VERSION: v3.10.1
   # renovate: datasource=github-releases depName=kubernetes/kubernetes
-  KUBECTL_VERSION: v1.24.2
+  KUBECTL_VERSION: v1.25.3
   # renovate: datasource=github-releases depName=helmfile/helmfile
   HELMFILE_VERSION: 0.145.2
   KUSTOMIZE_VERSION: v4.3.0
