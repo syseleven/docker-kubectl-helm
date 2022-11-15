@@ -37,7 +37,7 @@ variables:
   # renovate: datasource=github-releases depName=databus23/helm-diff
   HELMDIFF_VERSION: v3.6.0
   # renovate: datasource=github-releases depName=aslafy-z/helm-git
-  HELMGIT_VERSION: 0.13.0
+  HELMGIT_VERSION: v0.14.0
 
 .kaniko-build-base:
   tags:
