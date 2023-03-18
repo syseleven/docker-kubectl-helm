@@ -30,7 +30,7 @@ variables:
   # renovate: datasource=github-releases depName=kubernetes/kubernetes
   KUBECTL_VERSION: v1.24.2
   # renovate: datasource=github-releases depName=helmfile/helmfile
-  HELMFILE_VERSION: 0.145.2
+  HELMFILE_VERSION: v0.151.0
   KUSTOMIZE_VERSION: v4.3.0
   # renovate: datasource=repology depName=alpine_edge/s3cmd
   S3CMD_VERSION: 2.2.0-r1
